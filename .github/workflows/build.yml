@@ -1,0 +1,37 @@
+
+name: Ore ESP 1.3 bauen
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Projekt herunterladen
+        uses: actions/checkout@v4
+
+      - name: Java 25 einrichten
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - name: Gradle einrichten
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.7.1'
+
+      - name: Mod kompilieren
+        run: gradle build --stacktrace
+
+      - name: Fertige Mod bereitstellen
+        uses: actions/upload-artifact@v4
+        with:
+          name: OreESP-1.3-Mod
+          path: build/libs/*.jar
+          if-no-files-found: error
