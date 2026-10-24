@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "oreesp",
+  "version": "${version}",
+  "name": "Ore ESP",
+  "description": "Clientseitige Erzmarkierungen durch Waende, per X ein- und ausschaltbar.",
+  "authors": ["OpenAI"],
+  "environment": "client",
+  "entrypoints": {"client": ["de.example.oreesp.OreEspClient"]},
+  "depends": {"fabricloader": ">=0.19.5", "minecraft": "26.3", "java": ">=25", "fabric-api": "*"}
+}
